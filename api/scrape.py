@@ -19,8 +19,8 @@ class Vlr:
         return vlr_rankings(region)
 
     @staticmethod
-    def vlr_stats(region: str, timespan: str):
-        return vlr_stats(region, timespan)
+    def vlr_stats(region: str, timespan: str, min_rounds: str, min_rating: str, event_id: str):
+        return vlr_stats(region, timespan, min_rounds, min_rating, event_id)
 
     @staticmethod
     def vlr_upcoming_matches():

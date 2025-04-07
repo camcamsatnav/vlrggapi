@@ -20,7 +20,10 @@ async def VLR_news(request: Request):
 async def VLR_stats(
     request: Request,
     region: str = Query(..., description="Region shortname"),
-    timespan: str = Query(..., description="Timespan (30, 60, 90, or all)"),
+    timespan: str = Query(60, description="Timespan (30, 60, 90, or all)"),
+    min_rounds: str = Query('200', description="Minimum number of rounds played"),
+    min_rating: str = Query('1550', description="Minimum rating"),
+    event_id: str = Query('all', description="Event ID"),
 ):
     """
     Get VLR stats with query parameters.
@@ -34,7 +37,7 @@ async def VLR_stats(
         "oce": "oceania",\n
         "mn": "mena"\n
     """
-    return vlr.vlr_stats(region, timespan)
+    return vlr.vlr_stats(region, timespan, min_rounds, min_rating, event_id)
 
 
 @router.get("/rankings")
