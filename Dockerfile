@@ -1,20 +1,16 @@
-FROM --platform=linux/arm64 tiangolo/uvicorn-gunicorn:python3.9-alpine3.14 as base
-
-RUN mkdir -p /vlrggapi
+FROM python:3.9-slim as base
 
 WORKDIR /vlrggapi
-
 COPY requirements.txt .
-RUN pip install --no-cache-dir  -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-
-FROM --platform=linux/arm64 tiangolo/uvicorn-gunicorn:python3.9-alpine3.14 as final
+FROM python:3.9-slim as final
 
 WORKDIR /vlrggapi
 COPY --from=base /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 COPY . .
 
-RUN apk add curl
+RUN apt-get update && apt-get install -y curl
 
 CMD ["python", "main.py"]
 HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://127.0.0.1:3001/health || exit 1
