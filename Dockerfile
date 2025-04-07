@@ -1,7 +1,5 @@
 FROM tiangolo/uvicorn-gunicorn:python3.9-alpine3.14 as base
 
-RUN mkdir -p /vlrggapi
-
 WORKDIR /vlrggapi
 
 COPY requirements.txt .
