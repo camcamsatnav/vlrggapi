@@ -20,7 +20,7 @@ async def VLR_news(request: Request):
 async def VLR_stats(
     request: Request,
     region: str = Query(..., description="Region shortname"),
-    timespan: str = Query(60, description="Timespan (30, 60, 90, or all)"),
+    timespan: str = Query('60', description="Timespan (30, 60, 90, or all)"),
     min_rounds: str = Query('200', description="Minimum number of rounds played"),
     min_rating: str = Query('1550', description="Minimum rating"),
     event_id: str = Query('all', description="Event ID"),
