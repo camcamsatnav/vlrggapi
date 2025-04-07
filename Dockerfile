@@ -1,9 +1,11 @@
 FROM tiangolo/uvicorn-gunicorn:python3.9-alpine3.14 as base
 
+RUN mkdir -p /vlrggapi
+
 WORKDIR /vlrggapi
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir  -r requirements.txt
 
 
 FROM tiangolo/uvicorn-gunicorn:python3.9-alpine3.14 as final
