@@ -4,8 +4,8 @@ from selectolax.parser import HTMLParser
 from utils.utils import headers
 
 
-def vlr_stats(region: str, timespan: str, min_rounds: str, min_rating: str, event_id: str):
-    base_url = f"https://www.vlr.gg/stats/?event_group_id=all&event_id={event_id}&region={region}&country=all&min_rounds={min_rounds}&min_rating={min_rating}&agent=all&map_id=all"
+def vlr_stats(region: str, timespan: str, min_rounds: str, min_rating: str, event_id: str, event_group_id: str):
+    base_url = f"https://www.vlr.gg/stats/?event_group_id={event_group_id}&event_id={event_id}&region={region}&country=all&min_rounds={min_rounds}&min_rating={min_rating}&agent=all&map_id=all"
     url = (
         f"{base_url}&timespan=all"
         if timespan.lower() == "all"
